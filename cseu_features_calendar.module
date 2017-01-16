@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the CSEU Calendar feature.
+ */
+
+include_once 'cseu_features_calendar.features.inc';
