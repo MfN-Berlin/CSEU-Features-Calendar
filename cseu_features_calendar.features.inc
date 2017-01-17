@@ -28,7 +28,7 @@ function cseu_features_calendar_node_info() {
     'cseu_event' => array(
       'name' => t('Event'),
       'base' => 'node_content',
-      'description' => t('Events.'),
+      'description' => t('Content type for Events.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
