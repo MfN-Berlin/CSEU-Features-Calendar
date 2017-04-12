@@ -51,7 +51,7 @@ function cseu_features_calendar_field_default_field_instances() {
         'maxlength_js_label_summary' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'maxlength_js_summary' => '',
         'maxlength_js_truncate_html' => 0,
-        'rows' => 20,
+        'rows' => 5,
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
@@ -120,52 +120,6 @@ function cseu_features_calendar_field_default_field_instances() {
       ),
       'type' => 'date_select',
       'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance: 'node-cseu_event-field_cseu_event_description'.
-  $field_instances['node-cseu_event-field_cseu_event_description'] = array(
-    'bundle' => 'cseu_event',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
-      ),
-    ),
-    'ds_extras_field_template' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_cseu_event_description',
-    'label' => 'Description',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => '',
-        'maxlength_js_enforce' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_truncate_html' => 0,
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 2,
     ),
   );
 
@@ -377,7 +331,6 @@ function cseu_features_calendar_field_default_field_instances() {
   t('Body');
   t('Category');
   t('Date');
-  t('Description');
   t('Event Geofield');
   t('Venue');
 
