@@ -100,6 +100,9 @@ function cseu_features_calendar_strongarm() {
       'search_result' => array(
         'custom_settings' => FALSE,
       ),
+      'cseu_ds_view_mode_event' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

@@ -17,6 +17,12 @@ function cseu_features_calendar_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'cseu_ds_view_mode_event' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -65,6 +71,20 @@ function cseu_features_calendar_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'cseu_ds_view_mode_event' => array(
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'cseu_frontpage_short_date',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+        ),
+        'type' => 'date_default',
+        'weight' => 1,
+      ),
       'default' => array(
         'label' => 'inline',
         'module' => 'date',
@@ -129,6 +149,12 @@ function cseu_features_calendar_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'cseu_ds_view_mode_event' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'leaflet',
@@ -237,6 +263,12 @@ function cseu_features_calendar_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'cseu_ds_view_mode_event' => array(
+        'label' => 'inline',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
       'default' => array(
         'label' => 'inline',
         'module' => 'taxonomy',
@@ -277,6 +309,12 @@ function cseu_features_calendar_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'cseu_ds_view_mode_event' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'addressfield',
