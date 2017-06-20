@@ -749,5 +749,364 @@ function cseu_features_calendar_views_default_views() {
   );
   $export['cseu_events_calendar_view'] = $view;
 
+  $view = new view();
+  $view->name = 'cseu_wg_events_list';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Working Group Events List';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_accordion';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_ressource_type',
+      'rendered' => 0,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['row_class'] = 'cseu-chairs-by-group-row';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['style_options']['use-grouping-header'] = 1;
+  $handler->display->display_options['style_options']['collapsible'] = 1;
+  $handler->display->display_options['style_options']['row-start-open'] = 'none';
+  $handler->display->display_options['style_options']['autoheight'] = 0;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['element_default_classes'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
+    'cseu_working_group' => 'cseu_working_group',
+  );
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'cseu_working_group' => 'cseu_working_group',
+  );
+
+  /* Display: WG Events */
+  $handler = $view->new_display('page', 'WG Events', 'events_page');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = 'cseu-wg-events-list-row';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['element_default_classes'] = FALSE;
+  /* Field: Content: Long label  */
+  $handler->display->display_options['fields']['field_cseu_long_label']['id'] = 'field_cseu_long_label';
+  $handler->display->display_options['fields']['field_cseu_long_label']['table'] = 'field_data_field_cseu_long_label';
+  $handler->display->display_options['fields']['field_cseu_long_label']['field'] = 'field_cseu_long_label';
+  $handler->display->display_options['fields']['field_cseu_long_label']['label'] = '';
+  $handler->display->display_options['fields']['field_cseu_long_label']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_cseu_long_label']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_long_label']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_long_label']['type'] = 'text_plain';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[field_cseu_long_label] - [title]';
+  $handler->display->display_options['fields']['title']['alter']['path'] = '/wgs/wg[nid]';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'div';
+  $handler->display->display_options['fields']['title']['element_class'] = 'cseu-wgs-list-view-title-hidden';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['nid']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['title'] = '%1';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['validate_options']['types'] = array(
+    'cseu_working_group' => 'cseu_working_group',
+  );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'cseu_working_group' => 'cseu_working_group',
+  );
+  $handler->display->display_options['path'] = 'wgs/%/events';
+  $handler->display->display_options['menu']['title'] = 'Working Groups';
+  $handler->display->display_options['menu']['description'] = 'Working Groups';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+
+  /* Display: Attach WG Events */
+  $handler = $view->new_display('attachment', 'Attach WG Events', 'attach_events');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_accordion';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_cseu_event_date_1',
+      'rendered' => 1,
+      'rendered_strip' => 1,
+    ),
+  );
+  $handler->display->display_options['style_options']['row_class'] = 'cseu-events-calendar-row';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['style_options']['use-grouping-header'] = 1;
+  $handler->display->display_options['style_options']['collapsible'] = 1;
+  $handler->display->display_options['style_options']['row-start-open'] = 'none';
+  $handler->display->display_options['style_options']['autoheight'] = 0;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No upcoming events.';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Article referencing from field_working_group */
+  $handler->display->display_options['relationships']['reverse_field_working_group_node']['id'] = 'reverse_field_working_group_node';
+  $handler->display->display_options['relationships']['reverse_field_working_group_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_working_group_node']['field'] = 'reverse_field_working_group_node';
+  $handler->display->display_options['relationships']['reverse_field_working_group_node']['ui_name'] = 'Article referencing from field_working_group';
+  $handler->display->display_options['relationships']['reverse_field_working_group_node']['label'] = 'Article referencing from field_working_group';
+  $handler->display->display_options['relationships']['reverse_field_working_group_node']['required'] = TRUE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['element_default_classes'] = FALSE;
+  /* Field:  Event Date - Month */
+  $handler->display->display_options['fields']['field_cseu_event_date_1']['id'] = 'field_cseu_event_date_1';
+  $handler->display->display_options['fields']['field_cseu_event_date_1']['table'] = 'field_data_field_cseu_event_date';
+  $handler->display->display_options['fields']['field_cseu_event_date_1']['field'] = 'field_cseu_event_date';
+  $handler->display->display_options['fields']['field_cseu_event_date_1']['relationship'] = 'reverse_field_working_group_node';
+  $handler->display->display_options['fields']['field_cseu_event_date_1']['ui_name'] = ' Event Date - Month';
+  $handler->display->display_options['fields']['field_cseu_event_date_1']['label'] = '';
+  $handler->display->display_options['fields']['field_cseu_event_date_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_cseu_event_date_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_date_1']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_date_1']['settings'] = array(
+    'format_type' => 'date_format_cseu_date_type_month',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Article Ressource Type */
+  $handler->display->display_options['fields']['field_ressource_type']['id'] = 'field_ressource_type';
+  $handler->display->display_options['fields']['field_ressource_type']['table'] = 'field_data_field_ressource_type';
+  $handler->display->display_options['fields']['field_ressource_type']['field'] = 'field_ressource_type';
+  $handler->display->display_options['fields']['field_ressource_type']['relationship'] = 'reverse_field_working_group_node';
+  $handler->display->display_options['fields']['field_ressource_type']['ui_name'] = 'Article Ressource Type';
+  $handler->display->display_options['fields']['field_ressource_type']['label'] = '';
+  $handler->display->display_options['fields']['field_ressource_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_ressource_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ressource_type']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_ressource_type']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['relationship'] = 'reverse_field_working_group_node';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['path']['element_default_classes'] = FALSE;
+  /* Field: Content: Venue - Locality (i.e. City) */
+  $handler->display->display_options['fields']['field_cseu_event_venue_locality']['id'] = 'field_cseu_event_venue_locality';
+  $handler->display->display_options['fields']['field_cseu_event_venue_locality']['table'] = 'field_data_field_cseu_event_venue';
+  $handler->display->display_options['fields']['field_cseu_event_venue_locality']['field'] = 'field_cseu_event_venue_locality';
+  $handler->display->display_options['fields']['field_cseu_event_venue_locality']['relationship'] = 'reverse_field_working_group_node';
+  $handler->display->display_options['fields']['field_cseu_event_venue_locality']['label'] = '';
+  $handler->display->display_options['fields']['field_cseu_event_venue_locality']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_cseu_event_venue_locality']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_venue_locality']['element_default_classes'] = FALSE;
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_cseu_event_date']['id'] = 'field_cseu_event_date';
+  $handler->display->display_options['fields']['field_cseu_event_date']['table'] = 'field_data_field_cseu_event_date';
+  $handler->display->display_options['fields']['field_cseu_event_date']['field'] = 'field_cseu_event_date';
+  $handler->display->display_options['fields']['field_cseu_event_date']['relationship'] = 'reverse_field_working_group_node';
+  $handler->display->display_options['fields']['field_cseu_event_date']['label'] = '';
+  $handler->display->display_options['fields']['field_cseu_event_date']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_cseu_event_date']['element_class'] = 'cseu-event-date';
+  $handler->display->display_options['fields']['field_cseu_event_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_date']['settings'] = array(
+    'format_type' => 'date_format_cseu_date_type_iso_8601',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Global: Fieldset */
+  $handler->display->display_options['fields']['fieldset']['id'] = 'fieldset';
+  $handler->display->display_options['fields']['fieldset']['table'] = 'views';
+  $handler->display->display_options['fields']['fieldset']['field'] = 'fieldset';
+  $handler->display->display_options['fields']['fieldset']['children'] = array(
+    0 => 'title',
+    1 => 'field_cseu_event_venue_country',
+  );
+  $handler->display->display_options['fields']['fieldset']['fieldset']['type'] = 'div';
+  $handler->display->display_options['fields']['fieldset']['fieldset']['classes'] = 'cseu-event-content';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'reverse_field_working_group_node';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_type'] = 'div';
+  $handler->display->display_options['fields']['title']['element_class'] = 'cseu-event-title';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  /* Field: Content: Venue - Country */
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['id'] = 'field_cseu_event_venue_country';
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['table'] = 'field_data_field_cseu_event_venue';
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['field'] = 'field_cseu_event_venue_country';
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['relationship'] = 'reverse_field_working_group_node';
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['label'] = '';
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['alter']['text'] = '[field_cseu_event_venue_locality], [field_cseu_event_venue_country]';
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['element_class'] = 'cseu-event-venue';
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['display_name'] = 1;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Date -  start date (field_cseu_event_date) */
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['id'] = 'field_cseu_event_date_value';
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['table'] = 'field_data_field_cseu_event_date';
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['field'] = 'field_cseu_event_date_value';
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['relationship'] = 'reverse_field_working_group_node';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'cseu_working_group' => 'cseu_working_group',
+  );
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['filters']['type_1']['table'] = 'node';
+  $handler->display->display_options['filters']['type_1']['field'] = 'type';
+  $handler->display->display_options['filters']['type_1']['relationship'] = 'reverse_field_working_group_node';
+  $handler->display->display_options['filters']['type_1']['value'] = array(
+    'cseu_event' => 'cseu_event',
+  );
+  /* Filter criterion: Date: Date (node) */
+  $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter']['table'] = 'node';
+  $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter']['relationship'] = 'reverse_field_working_group_node';
+  $handler->display->display_options['filters']['date_filter']['operator'] = '>=';
+  $handler->display->display_options['filters']['date_filter']['default_date'] = 'now';
+  $handler->display->display_options['filters']['date_filter']['date_fields'] = array(
+    'field_data_field_cseu_event_date.field_cseu_event_date_value' => 'field_data_field_cseu_event_date.field_cseu_event_date_value',
+  );
+  $handler->display->display_options['displays'] = array(
+    'events_page' => 'events_page',
+    'default' => 0,
+  );
+  $handler->display->display_options['attachment_position'] = 'after';
+  $export['cseu_wg_events_list'] = $view;
+
   return $export;
 }
