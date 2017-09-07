@@ -82,7 +82,7 @@ function cseu_features_calendar_views_default_views() {
   /* Display: All Events */
   $handler = $view->new_display('page', 'All Events', 'all');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Upcoming Events';
+  $handler->display->display_options['title'] = 'Events';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -116,6 +116,18 @@ function cseu_features_calendar_views_default_views() {
   $handler->display->display_options['empty']['area']['content'] = 'No upcoming events.';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Style from category  */
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['id'] = 'field_cseu_event_type_1';
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['table'] = 'field_data_field_cseu_event_type';
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['field'] = 'field_cseu_event_type';
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['ui_name'] = 'Style from category ';
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['label'] = '';
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['alter']['text'] = 'cseu-event-category-[field_cseu_event_type_1-tid]';
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Event Date - Month */
   $handler->display->display_options['fields']['field_cseu_event_date_1']['id'] = 'field_cseu_event_date_1';
   $handler->display->display_options['fields']['field_cseu_event_date_1']['table'] = 'field_data_field_cseu_event_date';
@@ -133,15 +145,6 @@ function cseu_features_calendar_views_default_views() {
     'multiple_to' => '',
     'show_remaining_days' => 0,
   );
-  /* Field: Content: Category */
-  $handler->display->display_options['fields']['field_cseu_event_type']['id'] = 'field_cseu_event_type';
-  $handler->display->display_options['fields']['field_cseu_event_type']['table'] = 'field_data_field_cseu_event_type';
-  $handler->display->display_options['fields']['field_cseu_event_type']['field'] = 'field_cseu_event_type';
-  $handler->display->display_options['fields']['field_cseu_event_type']['label'] = '';
-  $handler->display->display_options['fields']['field_cseu_event_type']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_cseu_event_type']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_cseu_event_type']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_cseu_event_type']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Venue - Locality (i.e. City) */
   $handler->display->display_options['fields']['field_cseu_event_venue_locality']['id'] = 'field_cseu_event_venue_locality';
   $handler->display->display_options['fields']['field_cseu_event_venue_locality']['table'] = 'field_data_field_cseu_event_venue';
@@ -150,6 +153,17 @@ function cseu_features_calendar_views_default_views() {
   $handler->display->display_options['fields']['field_cseu_event_venue_locality']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_cseu_event_venue_locality']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_cseu_event_venue_locality']['element_default_classes'] = FALSE;
+  /* Field: Event Category */
+  $handler->display->display_options['fields']['field_cseu_event_type']['id'] = 'field_cseu_event_type';
+  $handler->display->display_options['fields']['field_cseu_event_type']['table'] = 'field_data_field_cseu_event_type';
+  $handler->display->display_options['fields']['field_cseu_event_type']['field'] = 'field_cseu_event_type';
+  $handler->display->display_options['fields']['field_cseu_event_type']['ui_name'] = 'Event Category';
+  $handler->display->display_options['fields']['field_cseu_event_type']['label'] = '';
+  $handler->display->display_options['fields']['field_cseu_event_type']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_cseu_event_type']['element_class'] = 'cseu-event-category [field_cseu_event_type_1]';
+  $handler->display->display_options['fields']['field_cseu_event_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_type']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_type']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Date */
   $handler->display->display_options['fields']['field_cseu_event_date']['id'] = 'field_cseu_event_date';
   $handler->display->display_options['fields']['field_cseu_event_date']['table'] = 'field_data_field_cseu_event_date';
@@ -175,11 +189,23 @@ function cseu_features_calendar_views_default_views() {
   $handler->display->display_options['fields']['fieldset']['table'] = 'views';
   $handler->display->display_options['fields']['fieldset']['field'] = 'fieldset';
   $handler->display->display_options['fields']['fieldset']['children'] = array(
-    0 => 'title',
-    1 => 'field_cseu_event_venue_country',
+    0 => 'field_cseu_event_type_2',
+    1 => 'title',
+    2 => 'field_cseu_event_venue_country',
   );
   $handler->display->display_options['fields']['fieldset']['fieldset']['type'] = 'div';
   $handler->display->display_options['fields']['fieldset']['fieldset']['classes'] = 'cseu-event-content';
+  /* Field: Event Category - Mobile */
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['id'] = 'field_cseu_event_type_2';
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['table'] = 'field_data_field_cseu_event_type';
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['field'] = 'field_cseu_event_type';
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['ui_name'] = 'Event Category - Mobile';
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['label'] = '';
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['element_class'] = 'cseu-event-category-mobile [field_cseu_event_type_1]';
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -963,6 +989,19 @@ function cseu_features_calendar_views_default_views() {
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['element_default_classes'] = FALSE;
+  /* Field: Style from category */
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['id'] = 'field_cseu_event_type_1';
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['table'] = 'field_data_field_cseu_event_type';
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['field'] = 'field_cseu_event_type';
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['relationship'] = 'reverse_field_working_group_node';
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['ui_name'] = 'Style from category';
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['label'] = '';
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['alter']['text'] = 'cseu-event-category-[field_cseu_event_type_1-tid]';
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_type_1']['type'] = 'taxonomy_term_reference_plain';
   /* Field:  Event Date - Month */
   $handler->display->display_options['fields']['field_cseu_event_date_1']['id'] = 'field_cseu_event_date_1';
   $handler->display->display_options['fields']['field_cseu_event_date_1']['table'] = 'field_data_field_cseu_event_date';
@@ -1010,6 +1049,18 @@ function cseu_features_calendar_views_default_views() {
   $handler->display->display_options['fields']['field_cseu_event_venue_locality']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_cseu_event_venue_locality']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_cseu_event_venue_locality']['element_default_classes'] = FALSE;
+  /* Field: Event Category */
+  $handler->display->display_options['fields']['field_cseu_event_type']['id'] = 'field_cseu_event_type';
+  $handler->display->display_options['fields']['field_cseu_event_type']['table'] = 'field_data_field_cseu_event_type';
+  $handler->display->display_options['fields']['field_cseu_event_type']['field'] = 'field_cseu_event_type';
+  $handler->display->display_options['fields']['field_cseu_event_type']['relationship'] = 'reverse_field_working_group_node';
+  $handler->display->display_options['fields']['field_cseu_event_type']['ui_name'] = 'Event Category';
+  $handler->display->display_options['fields']['field_cseu_event_type']['label'] = '';
+  $handler->display->display_options['fields']['field_cseu_event_type']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_cseu_event_type']['element_class'] = 'cseu-event-category [field_cseu_event_type_1]';
+  $handler->display->display_options['fields']['field_cseu_event_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_type']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_type']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Date */
   $handler->display->display_options['fields']['field_cseu_event_date']['id'] = 'field_cseu_event_date';
   $handler->display->display_options['fields']['field_cseu_event_date']['table'] = 'field_data_field_cseu_event_date';
@@ -1033,11 +1084,24 @@ function cseu_features_calendar_views_default_views() {
   $handler->display->display_options['fields']['fieldset']['table'] = 'views';
   $handler->display->display_options['fields']['fieldset']['field'] = 'fieldset';
   $handler->display->display_options['fields']['fieldset']['children'] = array(
-    0 => 'title',
-    1 => 'field_cseu_event_venue_country',
+    0 => 'field_cseu_event_type_2',
+    1 => 'title',
+    2 => 'field_cseu_event_venue_country',
   );
   $handler->display->display_options['fields']['fieldset']['fieldset']['type'] = 'div';
   $handler->display->display_options['fields']['fieldset']['fieldset']['classes'] = 'cseu-event-content';
+  /* Field: Event Category - Mobile */
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['id'] = 'field_cseu_event_type_2';
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['table'] = 'field_data_field_cseu_event_type';
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['field'] = 'field_cseu_event_type';
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['relationship'] = 'reverse_field_working_group_node';
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['ui_name'] = 'Event Category - Mobile';
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['label'] = '';
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['element_class'] = 'cseu-event-category-mobile [field_cseu_event_type_1]';
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_type_2']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';

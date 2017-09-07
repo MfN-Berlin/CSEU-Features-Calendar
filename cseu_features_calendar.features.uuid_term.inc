@@ -11,7 +11,7 @@ function cseu_features_calendar_uuid_features_default_terms() {
   $terms = array();
 
   $terms[] = array(
-    'name' => 'Internal',
+    'name' => 'COST Action Event',
     'description' => '<p>CA15212 own events, deriving from working groups activities.</p>',
     'format' => 'full_html',
     'weight' => 0,
@@ -22,7 +22,7 @@ function cseu_features_calendar_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
-    'name' => 'External',
+    'name' => 'External Event',
     'description' => '<p>Events done by others on citizen science research and policy events.</p>',
     'format' => 'full_html',
     'weight' => 1,
