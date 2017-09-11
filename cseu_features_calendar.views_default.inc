@@ -71,7 +71,6 @@ function cseu_features_calendar_views_default_views() {
   $handler->display->display_options['sorts']['field_cseu_event_date_value']['id'] = 'field_cseu_event_date_value';
   $handler->display->display_options['sorts']['field_cseu_event_date_value']['table'] = 'field_data_field_cseu_event_date';
   $handler->display->display_options['sorts']['field_cseu_event_date_value']['field'] = 'field_cseu_event_date_value';
-  $handler->display->display_options['sorts']['field_cseu_event_date_value']['order'] = 'DESC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -926,6 +925,12 @@ function cseu_features_calendar_views_default_views() {
   $handler->display->display_options['fields']['field_cseu_event_venue_country']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_cseu_event_venue_country']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_cseu_event_venue_country']['display_name'] = 1;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Date -  start date (field_cseu_event_date) */
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['id'] = 'field_cseu_event_date_value';
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['table'] = 'field_data_field_cseu_event_date';
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['field'] = 'field_cseu_event_date_value';
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['order'] = 'DESC';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
