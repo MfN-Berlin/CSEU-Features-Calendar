@@ -1151,6 +1151,8 @@ function cseu_features_calendar_views_default_views() {
 
   /* Display: Attach WG Events */
   $handler = $view->new_display('attachment', 'Attach WG Events', 'attach_events');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'attachment-accordion-wg-events';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
