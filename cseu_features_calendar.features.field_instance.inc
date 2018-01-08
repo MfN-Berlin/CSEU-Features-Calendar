@@ -55,7 +55,7 @@ function cseu_features_calendar_field_default_field_instances() {
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'maxlength_js_label_summary' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_summary' => '',
+        'maxlength_js_summary' => 200,
         'maxlength_js_truncate_html' => 0,
         'rows' => 5,
         'summary_rows' => 5,
