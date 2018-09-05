@@ -44,6 +44,12 @@ function cseu_features_calendar_field_default_field_instances() {
     'required' => 1,
     'settings' => array(
       'display_summary' => 1,
+      'required_summary' => array(
+        0 => 1,
+      ),
+      'show_summary' => array(
+        0 => 1,
+      ),
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -139,7 +145,7 @@ function cseu_features_calendar_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -252,7 +258,7 @@ function cseu_features_calendar_field_default_field_instances() {
         ),
       ),
       'type' => 'geocoder',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -261,7 +267,7 @@ function cseu_features_calendar_field_default_field_instances() {
     'bundle' => 'cseu_event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Type of event.',
     'display' => array(
       'cseu_ds_view_mode_event' => array(
         'label' => 'inline',
@@ -360,7 +366,7 @@ function cseu_features_calendar_field_default_field_instances() {
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => 5,
+      'weight' => 3,
     ),
   );
 
@@ -370,6 +376,7 @@ function cseu_features_calendar_field_default_field_instances() {
   t('Category');
   t('Date');
   t('Event Geofield');
+  t('Type of event.');
   t('Venue');
 
   return $field_instances;
