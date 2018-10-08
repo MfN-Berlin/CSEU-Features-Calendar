@@ -67,7 +67,7 @@ function cseu_features_calendar_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 1,
+      'weight' => 9,
     ),
   );
 
@@ -103,7 +103,7 @@ function cseu_features_calendar_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'inline',
@@ -145,7 +145,7 @@ function cseu_features_calendar_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 2,
+      'weight' => 10,
     ),
   );
 
@@ -215,7 +215,7 @@ function cseu_features_calendar_field_default_field_instances() {
           ),
         ),
         'type' => 'geofield_leaflet',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -258,7 +258,7 @@ function cseu_features_calendar_field_default_field_instances() {
         ),
       ),
       'type' => 'geocoder',
-      'weight' => 7,
+      'weight' => 4,
     ),
   );
 
@@ -280,7 +280,7 @@ function cseu_features_calendar_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -304,7 +304,7 @@ function cseu_features_calendar_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 4,
+      'weight' => 2,
     ),
   );
 
@@ -331,7 +331,7 @@ function cseu_features_calendar_field_default_field_instances() {
           'use_widget_handlers' => 1,
         ),
         'type' => 'addressfield_default',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -366,7 +366,52 @@ function cseu_features_calendar_field_default_field_instances() {
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => 3,
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-cseu_event-field_cseu_usage'.
+  $field_instances['node-cseu_event-field_cseu_usage'] = array(
+    'bundle' => 'cseu_event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Training School: show this event on the Training Schools page.',
+    'display' => array(
+      'cseu_ds_view_mode_event' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_cseu_usage',
+    'label' => 'Usage',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 4,
     ),
   );
 
@@ -376,7 +421,9 @@ function cseu_features_calendar_field_default_field_instances() {
   t('Category');
   t('Date');
   t('Event Geofield');
+  t('Training School: show this event on the Training Schools page.');
   t('Type of event.');
+  t('Usage');
   t('Venue');
 
   return $field_instances;

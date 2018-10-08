@@ -32,5 +32,16 @@ function cseu_features_calendar_uuid_features_default_terms() {
       'pathauto' => 0,
     ),
   );
+  $terms[] = array(
+    'name' => 'Training Schools',
+    'description' => '<p>Training Schools</p>',
+    'format' => 'full_html',
+    'weight' => 0,
+    'uuid' => '92705ee2-cbb1-4e53-b3ae-569a561b96b2',
+    'vocabulary_machine_name' => 'cseu_usage',
+    'path' => array(
+      'pathauto' => 0,
+    ),
+  );
   return $terms;
 }

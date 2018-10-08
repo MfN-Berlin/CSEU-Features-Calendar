@@ -128,10 +128,10 @@ function cseu_features_calendar_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '0',
+          'weight' => '8',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '5',
         ),
       ),
       'display' => array(),
