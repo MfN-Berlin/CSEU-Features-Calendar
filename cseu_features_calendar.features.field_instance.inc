@@ -238,7 +238,7 @@ function cseu_features_calendar_field_default_field_instances() {
       'settings' => array(
         'delta_handling' => 'default',
         'geocoder_field' => 'field_cseu_event_venue',
-        'geocoder_handler' => 'google',
+        'geocoder_handler' => 'openstreetmap_nominatim',
         'handler_settings' => array(
           'google' => array(
             'all_results' => 0,
