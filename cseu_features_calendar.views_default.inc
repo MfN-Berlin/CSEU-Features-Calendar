@@ -1111,6 +1111,7 @@ function cseu_features_calendar_views_default_views() {
   $handler->display->display_options['sorts']['field_cseu_event_date_value']['id'] = 'field_cseu_event_date_value';
   $handler->display->display_options['sorts']['field_cseu_event_date_value']['table'] = 'field_data_field_cseu_event_date';
   $handler->display->display_options['sorts']['field_cseu_event_date_value']['field'] = 'field_cseu_event_date_value';
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['order'] = 'DESC';
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['table'] = 'node';
@@ -1148,17 +1149,259 @@ function cseu_features_calendar_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'cseu_event' => 'cseu_event',
   );
-  /* Filter criterion: Content: Date -  start date (field_cseu_event_date) */
-  $handler->display->display_options['filters']['field_cseu_event_date_value']['id'] = 'field_cseu_event_date_value';
-  $handler->display->display_options['filters']['field_cseu_event_date_value']['table'] = 'field_data_field_cseu_event_date';
-  $handler->display->display_options['filters']['field_cseu_event_date_value']['field'] = 'field_cseu_event_date_value';
-  $handler->display->display_options['filters']['field_cseu_event_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_cseu_event_date_value']['default_date'] = 'today';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = '%';
   $export['cseu_view_list_events_by_usage'] = $view;
+
+  $view = new view();
+  $view->name = 'cseu_view_list_training_schools';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Training Schools';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = 'cseu-article-teaser-row';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No upcoming training schools.';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['body']['type'] = 'text_summary_or_trimmed';
+  $handler->display->display_options['fields']['body']['settings'] = array(
+    'trim_length' => '600',
+  );
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_cseu_event_date']['id'] = 'field_cseu_event_date';
+  $handler->display->display_options['fields']['field_cseu_event_date']['table'] = 'field_data_field_cseu_event_date';
+  $handler->display->display_options['fields']['field_cseu_event_date']['field'] = 'field_cseu_event_date';
+  $handler->display->display_options['fields']['field_cseu_event_date']['label'] = '';
+  $handler->display->display_options['fields']['field_cseu_event_date']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_cseu_event_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_date']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_date']['settings'] = array(
+    'format_type' => 'medium',
+    'custom_date_format' => '',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Field: Content: Venue - Locality (i.e. City) */
+  $handler->display->display_options['fields']['field_cseu_event_venue_locality']['id'] = 'field_cseu_event_venue_locality';
+  $handler->display->display_options['fields']['field_cseu_event_venue_locality']['table'] = 'field_data_field_cseu_event_venue';
+  $handler->display->display_options['fields']['field_cseu_event_venue_locality']['field'] = 'field_cseu_event_venue_locality';
+  $handler->display->display_options['fields']['field_cseu_event_venue_locality']['label'] = '';
+  $handler->display->display_options['fields']['field_cseu_event_venue_locality']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_cseu_event_venue_locality']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_venue_locality']['element_default_classes'] = FALSE;
+  /* Field: Content: Venue - Country */
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['id'] = 'field_cseu_event_venue_country';
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['table'] = 'field_data_field_cseu_event_venue';
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['field'] = 'field_cseu_event_venue_country';
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['label'] = '';
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['alter']['text'] = '[field_cseu_event_venue_locality], [field_cseu_event_venue_country]';
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_cseu_event_venue_country']['display_name'] = 1;
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view_node']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['view_node']['text'] = 'Read more';
+  /* Field: Wrapper */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['ui_name'] = 'Wrapper';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<article class="cseu-article-teaser-horizontal-layout">
+	<header class="cseu-article-teaser-header-container">
+		<h2 class="cseu-article-teaser-title-smaller">
+			[title]
+		</h2>	
+		<p class="cseu-article-teaser-date-bold">
+			[field_cseu_event_date]
+                        <br />
+			[field_cseu_event_venue_country]
+		</p>
+	</header>
+	<div class="cseu-article-teaser-wrapper">
+		<div class="cseu-article-teaser-content-container without-teaser-image">
+			<div class="cseu-article-teaser-synopsis">
+				[body]
+			</div>
+			<p class="cseu-article-teaser-target-link">
+				[view_node]
+			</p>
+		</div>
+	</div>
+</article>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
+  /* Sort criterion: Content: Date -  start date (field_cseu_event_date) */
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['id'] = 'field_cseu_event_date_value';
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['table'] = 'field_data_field_cseu_event_date';
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['field'] = 'field_cseu_event_date_value';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'cseu_event' => 'cseu_event',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    0 => '97',
+  );
+  $handler->display->display_options['filters']['tid']['group'] = 1;
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'cseu_usage';
+  /* Filter criterion: Content: Date -  start date (field_cseu_event_date) */
+  $handler->display->display_options['filters']['field_cseu_event_date_value']['id'] = 'field_cseu_event_date_value';
+  $handler->display->display_options['filters']['field_cseu_event_date_value']['table'] = 'field_data_field_cseu_event_date';
+  $handler->display->display_options['filters']['field_cseu_event_date_value']['field'] = 'field_cseu_event_date_value';
+  $handler->display->display_options['filters']['field_cseu_event_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_cseu_event_date_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_cseu_event_date_value']['default_date'] = 'today';
+
+  /* Display: Upcoming */
+  $handler = $view->new_display('page', 'Upcoming', 'upcoming');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Training Schools';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Date -  start date (field_cseu_event_date) */
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['id'] = 'field_cseu_event_date_value';
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['table'] = 'field_data_field_cseu_event_date';
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['field'] = 'field_cseu_event_date_value';
+  $handler->display->display_options['path'] = 'training-schools/upcoming';
+  $handler->display->display_options['menu']['type'] = 'default tab';
+  $handler->display->display_options['menu']['title'] = 'Upcoming';
+  $handler->display->display_options['menu']['description'] = 'Upcoming Training Schools';
+  $handler->display->display_options['menu']['weight'] = '1';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+  $handler->display->display_options['tab_options']['type'] = 'normal';
+  $handler->display->display_options['tab_options']['title'] = 'Training Schools';
+  $handler->display->display_options['tab_options']['weight'] = '0';
+  $handler->display->display_options['tab_options']['name'] = 'main-menu';
+
+  /* Display: Past */
+  $handler = $view->new_display('page', 'Past', 'past');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Past Training Schools';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No past training schools.';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Date -  start date (field_cseu_event_date) */
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['id'] = 'field_cseu_event_date_value';
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['table'] = 'field_data_field_cseu_event_date';
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['field'] = 'field_cseu_event_date_value';
+  $handler->display->display_options['sorts']['field_cseu_event_date_value']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'cseu_event' => 'cseu_event',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    0 => '97',
+  );
+  $handler->display->display_options['filters']['tid']['group'] = 1;
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'cseu_usage';
+  /* Filter criterion: Content: Date -  start date (field_cseu_event_date) */
+  $handler->display->display_options['filters']['field_cseu_event_date_value']['id'] = 'field_cseu_event_date_value';
+  $handler->display->display_options['filters']['field_cseu_event_date_value']['table'] = 'field_data_field_cseu_event_date';
+  $handler->display->display_options['filters']['field_cseu_event_date_value']['field'] = 'field_cseu_event_date_value';
+  $handler->display->display_options['filters']['field_cseu_event_date_value']['operator'] = '<';
+  $handler->display->display_options['filters']['field_cseu_event_date_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_cseu_event_date_value']['default_date'] = 'now';
+  $handler->display->display_options['path'] = 'training-schools/past';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Past';
+  $handler->display->display_options['menu']['description'] = 'Past Training Schools';
+  $handler->display->display_options['menu']['weight'] = '2';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+  $export['cseu_view_list_training_schools'] = $view;
 
   $view = new view();
   $view->name = 'cseu_wg_events_list';

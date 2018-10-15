@@ -68,5 +68,6 @@ features[variable][] = pathauto_node_cseu_event_pattern
 features[variable][] = pathauto_taxonomy_term_cseu_event_types_pattern
 features[views_view][] = cseu_events_calendar_view
 features[views_view][] = cseu_view_list_events_by_usage
+features[views_view][] = cseu_view_list_training_schools
 features[views_view][] = cseu_wg_events_list
 project path = sites/all/modules/custom
